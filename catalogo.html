@@ -347,6 +347,7 @@
     lightboxImg.addEventListener('click', e => e.stopPropagation());
     document.getElementById('lightbox-fechar').addEventListener('click', fecharLightbox);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharLightbox(); });
+
     const POR_PAGINA = 24;
 
     let todosOsProdutos = [];
@@ -355,6 +356,11 @@
     let catAtiva = 'todos';
 
     const grid = document.getElementById('catalogo-grid');
+
+    grid.addEventListener('click', e => {
+      const img = e.target.closest('img[data-lightbox]');
+      if (img) abrirLightbox(img.dataset.lightbox, img.alt);
+    });
     const contagemEl = document.getElementById('contagem');
     const verMaisWrap = document.getElementById('ver-mais-wrap');
     const btnVerMais = document.getElementById('btn-ver-mais');
@@ -369,7 +375,7 @@
         <div class="vestido-card">
           <div class="vestido-foto">
             <span class="badge-cat">${p.categoria}</span>
-            <img src="${p.imagem}" alt="${p.nome}" loading="lazy" onerror="this.style.display='none'" onclick="abrirLightbox('${p.imagem}','${p.nome.replace(/'/g,'\\')}')"/>
+            <img src="${p.imagem}" alt="${p.nome}" loading="lazy" onerror="this.style.display='none'" data-lightbox="${p.imagem}"/>
           </div>
           <div class="vestido-info">
             <h3 class="vestido-nome">${p.nome}</h3>
