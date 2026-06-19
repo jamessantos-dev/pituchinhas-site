@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pituchinhas Moda Infantil | Roupas Temáticas e de Gala em BH</title>
+  <meta name="description" content="Vestidos e looks especiais para as festas mais lindas dos seus pequenos. Temáticas, gala, personalização total e entrega para todo o Brasil." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --rosa:       #F2A7C3;
+      --rosa-escuro:#D6729A;
+      --dourado:    #C9A84C;
+      --dourado-claro: #F0D98C;
+      --creme:      #FFF8F3;
+      --branco:     #FFFFFF;
+      --texto:      #3D2C35;
+      --texto-leve: #7A5F6A;
+      --sombra:     rgba(198,114,154,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--texto);
+      background: var(--creme);
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(255,248,243,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--dourado-claro);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 5%;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-text { line-height: 1.2; }
+    .nav-logo-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--rosa-escuro); }
+    .nav-logo-text span { display: block; font-size: 0.65rem; letter-spacing: 3px; color: var(--dourado); font-family: 'Lato', sans-serif; font-weight: 700; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 28px; font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--texto-leve); }
+    .nav-links a:hover { color: var(--rosa-escuro); }
+    .nav-cta {
+      background: var(--rosa-escuro);
+      color: var(--branco) !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 0.85rem !important;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--dourado) !important; }
+
+    /* ── HERO ────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 5% 80px;
+      background: linear-gradient(135deg, #FFF0F6 0%, #FFF8F3 50%, #FEF9EE 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -120px; right: -120px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(242,167,195,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 620px; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--dourado-claro);
+      color: var(--dourado);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 50px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.15;
+      color: var(--texto);
+      margin-bottom: 20px;
+    }
+    .hero h1 em { color: var(--rosa-escuro); font-style: normal; }
+    .hero p {
+      font-size: 1.1rem; line-height: 1.8;
+      color: var(--texto-leve);
+      margin-bottom: 36px; max-width: 500px;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366;
+      color: var(--branco);
+      font-size: 1rem; font-weight: 700;
+      padding: 16px 32px; border-radius: 50px;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37,211,102,0.45); }
+    .btn-primary svg { width: 22px; height: 22px; }
+    .hero-trust {
+      margin-top: 32px;
+      display: flex; gap: 28px; flex-wrap: wrap;
+      font-size: 0.82rem; color: var(--texto-leve); font-weight: 700;
+    }
+    .hero-trust span::before { content: '✓ '; color: var(--rosa-escuro); }
+
+    /* ── DECORATIVE DIVIDER ──────────────────── */
+    .divider {
+      text-align: center;
+      font-size: 1.5rem;
+      color: var(--rosa);
+      padding: 8px 0;
+      letter-spacing: 8px;
+    }
+
+    /* ── SECTION BASE ────────────────────────── */
+    section { padding: 88px 5%; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--dourado);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--texto);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem; color: var(--texto-leve);
+      line-height: 1.8; max-width: 560px;
+    }
+
+    /* ── GALERIA ─────────────────────────────── */
+    .galeria { background: var(--branco); }
+    .galeria-header { text-align: center; margin-bottom: 52px; }
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .galeria-item {
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      position: relative;
+      background: linear-gradient(145deg, #FCE4EC, #FFF0F6);
+      box-shadow: 0 4px 20px var(--sombra);
+      transition: transform .3s;
+    }
+    .galeria-item:hover { transform: translateY(-6px); }
+    .galeria-item .placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; padding: 24px; text-align: center;
+    }
+    .galeria-item .emoji { font-size: 3.5rem; }
+    .galeria-item .label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--rosa-escuro);
+    }
+    .galeria-item .tag {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--dourado);
+      background: rgba(201,168,76,0.12);
+      padding: 4px 12px; border-radius: 50px;
+    }
+
+    /* ── COMO FUNCIONA ───────────────────────── */
+    .como-funciona { background: var(--creme); }
+    .steps-header { text-align: center; margin-bottom: 60px; }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px; max-width: 960px; margin: 0 auto;
+    }
+    .step {
+      text-align: center;
+      background: var(--branco);
+      border-radius: 24px;
+      padding: 44px 32px;
+      box-shadow: 0 4px 20px var(--sombra);
+      position: relative;
+    }
+    .step-number {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro));
+      color: var(--branco);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 16px rgba(214,114,154,0.35);
+    }
+    .step h3 { font-size: 1.15rem; margin-bottom: 10px; color: var(--texto); }
+    .step p { font-size: 0.9rem; color: var(--texto-leve); line-height: 1.7; }
+    .step-icon { font-size: 2.2rem; margin-bottom: 16px; }
+
+    /* ── DEPOIMENTOS ─────────────────────────── */
+    .depoimentos { background: var(--branco); }
+    .dep-header { text-align: center; margin-bottom: 52px; }
+    .dep-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; max-width: 1100px; margin: 0 auto;
+    }
+    .dep-card {
+      background: var(--creme);
+      border-radius: 20px;
+      padding: 32px 28px;
+      border-left: 4px solid var(--rosa);
+      box-shadow: 0 4px 16px var(--sombra);
+    }
+    .dep-stars { color: var(--dourado); font-size: 1.1rem; margin-bottom: 14px; }
+    .dep-texto { font-size: 0.95rem; line-height: 1.8; color: var(--texto); margin-bottom: 20px; font-style: italic; }
+    .dep-autor { display: flex; align-items: center; gap: 12px; }
+    .dep-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .dep-nome { font-weight: 700; font-size: 0.9rem; }
+    .dep-info { font-size: 0.78rem; color: var(--texto-leve); }
+
+    /* ── FAQ ─────────────────────────────────── */
+    .faq { background: var(--creme); }
+    .faq-header { text-align: center; margin-bottom: 52px; }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+    .faq-item {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 12px var(--sombra);
+      border-left: 3px solid var(--dourado-claro);
+    }
+    .faq-pergunta {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--texto);
+      margin-bottom: 10px;
+    }
+    .faq-resposta { font-size: 0.9rem; color: var(--texto-leve); line-height: 1.75; }
+
+    /* ── CTA FINAL ───────────────────────────── */
+    .cta-final {
+      background: linear-gradient(135deg, var(--rosa-escuro) 0%, #C05C8C 100%);
+      color: var(--branco);
+      text-align: center;
+      padding: 96px 5%;
+      position: relative; overflow: hidden;
+    }
+    .cta-final::before {
+      content: '🎀';
+      position: absolute; font-size: 12rem; opacity: 0.07;
+      top: -30px; left: -30px;
+    }
+    .cta-final::after {
+      content: '✨';
+      position: absolute; font-size: 10rem; opacity: 0.07;
+      bottom: -20px; right: -20px;
+    }
+    .cta-final .section-label { color: var(--dourado-claro); }
+    .cta-final .section-title { color: var(--branco); }
+    .cta-final p { color: rgba(255,255,255,0.85); font-size: 1.05rem; line-height: 1.8; max-width: 520px; margin: 16px auto 36px; }
+    .btn-wpp-grande {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--branco);
+      color: #1A7C3E;
+      font-size: 1.05rem; font-weight: 700;
+      padding: 18px 38px; border-radius: 50px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-wpp-grande:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,0.28); }
+    .btn-wpp-grande svg { width: 26px; height: 26px; }
+
+    /* ── FOOTER ──────────────────────────────── */
+    footer {
+      background: var(--texto);
+      color: rgba(255,255,255,0.7);
+      padding: 52px 5% 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--branco);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { display: block; font-size: 0.65rem; letter-spacing: 3px; color: var(--dourado); font-family: 'Lato', sans-serif; font-weight: 700; text-transform: uppercase; }
+    .footer-desc { font-size: 0.88rem; line-height: 1.75; max-width: 300px; }
+    .footer-col h4 { color: var(--branco); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 0.88rem; margin-bottom: 10px; color: rgba(255,255,255,0.65); transition: color .2s; }
+    .footer-col a:hover { color: var(--rosa); }
+    .social-links { display: flex; gap: 12px; margin-top: 16px; }
+    .social-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      transition: background .2s;
+    }
+    .social-btn:hover { background: var(--rosa-escuro); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    /* ── FLOATING WPP ────────────────────────── */
+    .wpp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      width: 58px; height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+      transition: transform .2s;
+    }
+    .wpp-float:hover { transform: scale(1.1); }
+    .wpp-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero { text-align: center; padding: 100px 6% 60px; }
+      .hero p, .section-sub { max-width: 100%; }
+      .hero-trust { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <svg width="48" height="40" viewBox="0 0 48 40" xmlns="http://www.w3.org/2000/svg">
+        <!-- arco-íris -->
+        <path d="M4 34 A20 20 0 0 1 44 34" fill="none" stroke="#E8739A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M7.5 34 A16.5 16.5 0 0 1 40.5 34" fill="none" stroke="#F5A623" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M11 34 A13 13 0 0 1 37 34" fill="none" stroke="#F8D840" stroke-width="3" stroke-linecap="round"/>
+        <path d="M14.5 34 A9.5 9.5 0 0 1 33.5 34" fill="none" stroke="#74C69D" stroke-width="3" stroke-linecap="round"/>
+        <path d="M18 34 A6 6 0 0 1 30 34" fill="none" stroke="#74B9E8" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- estrelinhas -->
+        <text x="2" y="14" font-size="7" opacity="0.7">✦</text>
+        <text x="38" y="10" font-size="6" opacity="0.6">✦</text>
+      </svg>
+      <div class="nav-logo-text">
+        <strong>Pituchinhas</strong>
+        <span>Moda Infantil</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="catalogo.html">Catálogo</a>
+      <a href="#como-funciona">Como Funciona</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://wa.me/5531996935928?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20conhecer%20as%20op%C3%A7%C3%B5es%20da%20Pituchinhas%20%F0%9F%8E%80" class="nav-cta">Falar com Especialista</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">✨ Roupas Temáticas e de Gala em BH</div>
+      <h1>O look <em>encantado</em> que sua pequena merece</h1>
+      <p>Vestidos únicos, personalizados e cheios de magia para o momento mais especial da festa. Do tema dos sonhos ao brilho do gala — a gente realiza!</p>
+      <a href="https://wa.me/5531996935928?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20conhecer%20as%20op%C3%A7%C3%B5es%20da%20Pituchinhas%20%F0%9F%8E%80" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Falar com Especialista
+      </a>
+      <div class="hero-trust">
+        <span>Entrega para todo o Brasil</span>
+        <span>Vestidos sob encomenda</span>
+        <span>Atendimento especializado</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">🎀 ✨ 🎀</div>
+
+  <!-- GALERIA -->
+  <section class="galeria" id="galeria">
+    <div class="galeria-header">
+      <div class="section-label">Nossa Coleção</div>
+      <h2 class="section-title">Looks que fazem a festa ainda mais especial</h2>
+      <p class="section-sub" style="margin: 0 auto; text-align:center;">Vestidos encomendados sob medida para que sua pequena se sinta uma princesa — ou qualquer personagem que ela sonhe ser!</p>
+    </div>
+    <div class="galeria-grid">
+      <div class="galeria-item">
+        <div class="placeholder">
+          <div class="emoji">👗</div>
+          <div class="label">Jardim Encantado</div>
+          <div class="tag">Temático</div>
+        </div>
+      </div>
+      <div class="galeria-item" style="background: linear-gradient(145deg, #FFF9E6, #FEF3C7);">
+        <div class="placeholder">
+          <div class="emoji">✨</div>
+          <div class="label">Gala & Formatura</div>
+          <div class="tag">Gala</div>
+        </div>
+      </div>
+      <div class="galeria-item" style="background: linear-gradient(145deg, #F3E8FF, #EDE0FF);">
+        <div class="placeholder">
+          <div class="emoji">🌸</div>
+          <div class="label">Princesa & Fadas</div>
+          <div class="tag">Temático</div>
+        </div>
+      </div>
+      <div class="galeria-item" style="background: linear-gradient(145deg, #E8F5E9, #D7F0DB);">
+        <div class="placeholder">
+          <div class="emoji">🦋</div>
+          <div class="label">Safari & Natureza</div>
+          <div class="tag">Temático</div>
+        </div>
+      </div>
+      <div class="galeria-item" style="background: linear-gradient(145deg, #FFF0F0, #FFE4E4);">
+        <div class="placeholder">
+          <div class="emoji">🎪</div>
+          <div class="label">Circo & Fantasia</div>
+          <div class="tag">Temático</div>
+        </div>
+      </div>
+      <div class="galeria-item" style="background: linear-gradient(145deg, #E8F0FE, #D2E3FC);">
+        <div class="placeholder">
+          <div class="emoji">🌊</div>
+          <div class="label">Fundo do Mar</div>
+          <div class="tag">Temático</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">🎀 ✨ 🎀</div>
+
+  <!-- COMO FUNCIONA -->
+  <section class="como-funciona" id="como-funciona">
+    <div class="steps-header">
+      <div class="section-label">Simples assim</div>
+      <h2 class="section-title">Como funciona</h2>
+      <p class="section-sub" style="margin: 8px auto 0; text-align: center;">Em 3 passos você garante o look perfeito para a festa dos sonhos!</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-icon">🎉</div>
+        <div class="step-number">1</div>
+        <h3>Conta o Tema</h3>
+        <p>Me diga o tema da festa, a data, o nome e a idade da criança. Quanto mais detalhes, mais incrível fica o look!</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">📏</div>
+        <div class="step-number">2</div>
+        <h3>Medidas & Tamanho</h3>
+        <p>Você passa o tamanho da criança e escolhe o modelo do nosso catálogo — temático, gala ou os dois.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">🎀</div>
+        <div class="step-number">3</div>
+        <h3>Recebe o Look</h3>
+        <p>Nossa equipe monta a proposta personalizada e entrega para todo o Brasil. Sua pequena vai arrasar!</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">🎀 ✨ 🎀</div>
+
+  <!-- DEPOIMENTOS -->
+  <section class="depoimentos" id="depoimentos">
+    <div class="dep-header">
+      <div class="section-label">O que as mamães dizem</div>
+      <h2 class="section-title">Famílias encantadas</h2>
+    </div>
+    <div class="dep-grid">
+      <div class="dep-card">
+        <div class="dep-stars">★★★★★</div>
+        <p class="dep-texto">"Encomendei o vestido do tema Jardim Encantado para a festa de 3 anos da Luísa e foi simplesmente lindo! A Carol entendeu exatamente o que eu queria. Minha filha não queria tirar o vestido nem depois da festa acabar!"</p>
+        <div class="dep-autor">
+          <div class="dep-avatar">👩</div>
+          <div>
+            <div class="dep-nome">Fernanda M.</div>
+            <div class="dep-info">Mamãe da Luísa, 3 anos · BH</div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card">
+        <div class="dep-stars">★★★★★</div>
+        <p class="dep-texto">"Meu filho queria muito o tema Safari e a Pituchinhas fez um look completo incrível! Qualidade excelente, entregou antes do prazo e o atendimento foi super carinhoso. Recomendo demais para todas as mães!"</p>
+        <div class="dep-autor">
+          <div class="dep-avatar">👩‍🦱</div>
+          <div>
+            <div class="dep-nome">Patrícia R.</div>
+            <div class="dep-info">Mamãe do Theo, 2 anos · Contagem</div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card">
+        <div class="dep-stars">★★★★★</div>
+        <p class="dep-texto">"Comprei o vestido de gala para a formatura da pré-escola da minha filha. Ficou tão maravilhoso que as professoras pediram o contato da loja! Atendimento perfeito do início ao fim. Já sou cliente fiel!"</p>
+        <div class="dep-autor">
+          <div class="dep-avatar">👩‍🦰</div>
+          <div>
+            <div class="dep-nome">Camila T.</div>
+            <div class="dep-info">Mamãe da Sofia, 6 anos · Nova Lima</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">🎀 ✨ 🎀</div>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-header">
+      <div class="section-label">Dúvidas frequentes</div>
+      <h2 class="section-title">Perguntas & Respostas</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-pergunta">🎀 Como funciona a encomenda?</div>
+        <div class="faq-resposta">Você escolhe o vestido no nosso catálogo, nos informa o tamanho da criança e a data da festa. Encomendamos o modelo sob medida para garantir o melhor caimento no grande dia!</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-pergunta">📦 Entregam para fora de BH?</div>
+        <div class="faq-resposta">Entregamos para todo o Brasil! Trabalhamos com transportadoras de confiança para garantir que o look chegue em perfeito estado e dentro do prazo combinado.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-pergunta">📏 E se eu não souber o tamanho exato da criança?</div>
+        <div class="faq-resposta">Sem problema! Nossa especialista vai te orientar passo a passo sobre como medir sua criança da forma correta. É simples e garantimos o melhor caimento.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-pergunta">⏱️ Qual o prazo para receber o pedido?</div>
+        <div class="faq-resposta">O prazo varia conforme o modelo escolhido e o seu endereço de entrega. Ao entrar em contato, nossa equipe informa o prazo exato para que o vestido chegue com tranquilidade antes da festa.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-pergunta">🔄 Tem política de troca?</div>
+        <div class="faq-resposta">Nossos vestidos são feitos sob encomenda com um atendimento minucioso para que você receba exatamente o que imaginou. Justamente por isso, até hoje nunca tivemos problemas com tamanhos ou medidas — nossa equipe cuida de cada detalhe antes de confirmar o pedido.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="section-label">Pronta para realizar o sonho?</div>
+    <h2 class="section-title">Vamos criar o look perfeito juntas!</h2>
+    <p>Fale agora com nossa especialista e receba uma proposta personalizada para a festa mais linda que seu pequeno já teve. ✨</p>
+    <a href="https://wa.me/5531996935928?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20conhecer%20as%20op%C3%A7%C3%B5es%20da%20Pituchinhas%20%F0%9F%8E%80" class="btn-wpp-grande">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Quero meu look especial agora!
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          Pituchinhas
+          <span>Moda Infantil</span>
+        </div>
+        <p class="footer-desc">Roupas temáticas e de gala para os momentos mais especiais da vida dos seus pequenos. Feitas com amor, entregues com encanto.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/pituchinhasmodainfantilbh/" target="_blank" class="social-btn" title="Instagram">📸</a>
+          <a href="https://wa.me/5531996935928" target="_blank" class="social-btn" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <a href="#galeria">Nossa Coleção</a>
+        <a href="#como-funciona">Como Funciona</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a href="https://wa.me/5531996935928">📱 (31) 99693-5928</a>
+        <a href="https://www.instagram.com/pituchinhasmodainfantilbh/" target="_blank">📸 @pituchinhasmodainfantilbh</a>
+        <a href="#faq">📦 Enviamos para todo o Brasil</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Pituchinhas Moda Infantil · Feito com 🎀 em Belo Horizonte
+    </div>
+  </footer>
+
+  <!-- FLOATING WPP BUTTON -->
+  <a href="https://wa.me/5531996935928?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20conhecer%20as%20op%C3%A7%C3%B5es%20da%20Pituchinhas%20%F0%9F%8E%80" class="wpp-float" title="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+</body>
+</html>

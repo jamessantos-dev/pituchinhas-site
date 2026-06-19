@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo — Pituchinhas Moda Infantil</title>
+  <meta name="description" content="Veja nossos vestidos infantis temáticos e de gala disponíveis para encomenda. Clique e chame no WhatsApp!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --rosa:          #F2A7C3;
+      --rosa-escuro:   #D6729A;
+      --dourado:       #C9A84C;
+      --dourado-claro: #F0D98C;
+      --creme:         #FFF8F3;
+      --branco:        #FFFFFF;
+      --texto:         #3D2C35;
+      --texto-leve:    #7A5F6A;
+      --sombra:        rgba(198,114,154,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; color: var(--texto); background: var(--creme); }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(255,248,243,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--dourado-claro);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 5%;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--rosa-escuro); line-height: 1.2; }
+    .nav-logo-text span { display: block; font-size: 0.65rem; letter-spacing: 3px; color: var(--dourado); font-family: 'Lato', sans-serif; font-weight: 700; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 28px; font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--texto-leve); }
+    .nav-links a:hover { color: var(--rosa-escuro); }
+    .nav-links .ativo { color: var(--rosa-escuro); border-bottom: 2px solid var(--rosa-escuro); padding-bottom: 2px; }
+    .nav-cta { background: var(--rosa-escuro); color: var(--branco) !important; padding: 10px 22px; border-radius: 50px; font-size: 0.85rem !important; transition: background .2s; }
+    .nav-cta:hover { background: var(--dourado) !important; }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 140px 5% 60px;
+      text-align: center;
+      background: linear-gradient(135deg, #FFF0F6 0%, #FFF8F3 60%, #FEF9EE 100%);
+    }
+    .page-header .label { font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--dourado); margin-bottom: 12px; }
+    .page-header h1 { font-size: clamp(1.8rem, 4vw, 3rem); color: var(--texto); margin-bottom: 14px; }
+    .page-header p { font-size: 1rem; color: var(--texto-leve); line-height: 1.8; max-width: 520px; margin: 0 auto; }
+
+    /* FILTROS */
+    .filtros {
+      display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+      padding: 32px 5% 0;
+    }
+    .filtro-btn {
+      border: 2px solid var(--rosa);
+      background: transparent;
+      color: var(--rosa-escuro);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 8px 20px; border-radius: 50px;
+      cursor: pointer; transition: all .2s;
+    }
+    .filtro-btn:hover, .filtro-btn.ativo {
+      background: var(--rosa-escuro); color: var(--branco); border-color: var(--rosa-escuro);
+    }
+
+    /* GRID */
+    .catalogo-section { padding: 40px 5% 88px; }
+    .catalogo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+      max-width: 1200px; margin: 0 auto;
+    }
+
+    /* CARD */
+    .vestido-card {
+      background: var(--branco);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--sombra);
+      transition: transform .3s, box-shadow .3s;
+      display: flex; flex-direction: column;
+    }
+    .vestido-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px var(--sombra); }
+
+    /* FOTO */
+    .vestido-foto {
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: linear-gradient(145deg, #FCE4EC, #FFF0F6);
+      position: relative;
+    }
+    .vestido-foto img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .vestido-foto .sem-foto {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px;
+    }
+    .vestido-foto .sem-foto .emoji { font-size: 4rem; }
+    .vestido-foto .sem-foto span { font-size: 0.78rem; color: var(--texto-leve); font-weight: 700; letter-spacing: 1px; }
+    .badge-tipo {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--rosa-escuro); color: var(--branco);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 50px;
+    }
+    .badge-tipo.gala { background: var(--dourado); }
+
+    /* INFO */
+    .vestido-info {
+      padding: 20px 22px 22px;
+      display: flex; flex-direction: column; gap: 12px;
+      flex: 1;
+    }
+    .vestido-nome { font-size: 1.05rem; color: var(--texto); }
+    .vestido-descricao { font-size: 0.85rem; color: var(--texto-leve); line-height: 1.6; }
+
+    .tamanhos-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dourado); }
+    .tamanhos-lista { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .tamanho-chip {
+      border: 1.5px solid var(--rosa);
+      color: var(--rosa-escuro);
+      font-size: 0.8rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 50px;
+    }
+
+    .btn-interesse {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: #25D366; color: var(--branco);
+      font-size: 0.9rem; font-weight: 700;
+      padding: 13px; border-radius: 14px;
+      margin-top: auto;
+      transition: background .2s, transform .15s;
+    }
+    .btn-interesse:hover { background: #1ebe5d; transform: scale(1.02); }
+    .btn-interesse svg { width: 18px; height: 18px; fill: white; }
+
+    /* FLOATING WPP */
+    .wpp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      width: 58px; height: 58px;
+      background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+      transition: transform .2s;
+    }
+    .wpp-float:hover { transform: scale(1.1); }
+    .wpp-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* FOOTER */
+    footer { background: var(--texto); color: rgba(255,255,255,0.65); padding: 36px 5%; text-align: center; font-size: 0.85rem; }
+    footer a { color: var(--rosa); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .catalogo-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <svg width="48" height="40" viewBox="0 0 48 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 34 A20 20 0 0 1 44 34" fill="none" stroke="#E8739A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M7.5 34 A16.5 16.5 0 0 1 40.5 34" fill="none" stroke="#F5A623" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M11 34 A13 13 0 0 1 37 34" fill="none" stroke="#F8D840" stroke-width="3" stroke-linecap="round"/>
+        <path d="M14.5 34 A9.5 9.5 0 0 1 33.5 34" fill="none" stroke="#74C69D" stroke-width="3" stroke-linecap="round"/>
+        <path d="M18 34 A6 6 0 0 1 30 34" fill="none" stroke="#74B9E8" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="2" y="14" font-size="7" opacity="0.7">✦</text>
+        <text x="38" y="10" font-size="6" opacity="0.6">✦</text>
+      </svg>
+      <div class="nav-logo-text">
+        <strong>Pituchinhas</strong>
+        <span>Moda Infantil</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="catalogo.html" class="ativo">Catálogo</a>
+      <a href="index.html#como-funciona">Como Funciona</a>
+      <a href="index.html#depoimentos">Depoimentos</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="https://wa.me/5531996935928" class="nav-cta">Falar no WhatsApp</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="label">✨ Vestidos Disponíveis</div>
+    <h1>Nosso Catálogo</h1>
+    <p>Escolha o vestido ideal para a festa da sua pequena e chame a gente no WhatsApp para encomendar!</p>
+  </div>
+
+  <!-- FILTROS -->
+  <div class="filtros">
+    <button class="filtro-btn ativo" onclick="filtrar('todos', this)">Todos</button>
+    <button class="filtro-btn" onclick="filtrar('tematico', this)">Temáticos</button>
+    <button class="filtro-btn" onclick="filtrar('gala', this)">Gala & Social</button>
+  </div>
+
+  <!-- CATÁLOGO -->
+  <section class="catalogo-section">
+    <div class="catalogo-grid" id="catalogo-grid">
+
+      <!--
+        ════════════════════════════════════════════════════
+        COMO ADICIONAR UM VESTIDO:
+
+        Copie o bloco abaixo, cole aqui e preencha:
+          - data-tipo: "tematico" ou "gala"
+          - Nome do vestido
+          - Descrição curta
+          - Tamanhos disponíveis (adicione ou remova chips)
+          - Na tag <img>, coloque o caminho da foto (ex: fotos/vestido-jardim.jpg)
+            ou remova a tag <img> e deixe o placeholder .sem-foto
+
+        EXEMPLO COM FOTO:
+          <img src="fotos/nome-do-arquivo.jpg" alt="Nome do vestido" />
+
+        EXEMPLO SEM FOTO (placeholder):
+          <div class="sem-foto">
+            <div class="emoji">👗</div>
+            <span>Em breve</span>
+          </div>
+        ════════════════════════════════════════════════════
+      -->
+
+      <!-- VESTIDO 1 -->
+      <div class="vestido-card" data-tipo="tematico">
+        <div class="vestido-foto">
+          <span class="badge-tipo">Temático</span>
+          <div class="sem-foto">
+            <div class="emoji">🌸</div>
+            <span>Adicionar foto</span>
+          </div>
+        </div>
+        <div class="vestido-info">
+          <h3 class="vestido-nome">Jardim Encantado</h3>
+          <p class="vestido-descricao">Vestido com tule florido, perfeito para festas com tema de jardim, fadas e natureza.</p>
+          <div>
+            <div class="tamanhos-label">Tamanhos disponíveis</div>
+            <div class="tamanhos-lista">
+              <span class="tamanho-chip">2</span>
+              <span class="tamanho-chip">4</span>
+              <span class="tamanho-chip">6</span>
+              <span class="tamanho-chip">8</span>
+            </div>
+          </div>
+          <a class="btn-interesse" href="#" onclick="chamarWhatsApp('Jardim Encantado', event)">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Tenho interesse!
+          </a>
+        </div>
+      </div>
+
+      <!-- VESTIDO 2 -->
+      <div class="vestido-card" data-tipo="gala">
+        <div class="vestido-foto">
+          <span class="badge-tipo gala">Gala</span>
+          <div class="sem-foto">
+            <div class="emoji">✨</div>
+            <span>Adicionar foto</span>
+          </div>
+        </div>
+        <div class="vestido-info">
+          <h3 class="vestido-nome">Sonho de Princesa</h3>
+          <p class="vestido-descricao">Vestido de gala com brilho e saia ampla, ideal para formaturas e eventos sociais.</p>
+          <div>
+            <div class="tamanhos-label">Tamanhos disponíveis</div>
+            <div class="tamanhos-lista">
+              <span class="tamanho-chip">4</span>
+              <span class="tamanho-chip">6</span>
+              <span class="tamanho-chip">8</span>
+              <span class="tamanho-chip">10</span>
+            </div>
+          </div>
+          <a class="btn-interesse" href="#" onclick="chamarWhatsApp('Sonho de Princesa', event)">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Tenho interesse!
+          </a>
+        </div>
+      </div>
+
+      <!-- VESTIDO 3 -->
+      <div class="vestido-card" data-tipo="tematico">
+        <div class="vestido-foto">
+          <span class="badge-tipo">Temático</span>
+          <div class="sem-foto">
+            <div class="emoji">🦁</div>
+            <span>Adicionar foto</span>
+          </div>
+        </div>
+        <div class="vestido-info">
+          <h3 class="vestido-nome">Safari & Natureza</h3>
+          <p class="vestido-descricao">Look temático com estampa de safari, perfeito para festas na natureza e aventura.</p>
+          <div>
+            <div class="tamanhos-label">Tamanhos disponíveis</div>
+            <div class="tamanhos-lista">
+              <span class="tamanho-chip">2</span>
+              <span class="tamanho-chip">4</span>
+              <span class="tamanho-chip">6</span>
+            </div>
+          </div>
+          <a class="btn-interesse" href="#" onclick="chamarWhatsApp('Safari & Natureza', event)">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Tenho interesse!
+          </a>
+        </div>
+      </div>
+
+      <!-- ADICIONE MAIS VESTIDOS AQUI -->
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 <a href="index.html">Pituchinhas Moda Infantil</a> · Belo Horizonte ·
+    <a href="https://wa.me/5531996935928">📱 (31) 99693-5928</a>
+  </footer>
+
+  <!-- FLOATING WPP -->
+  <a href="https://wa.me/5531996935928" class="wpp-float" title="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <script>
+    const WPP = '5531996935928';
+
+    function chamarWhatsApp(nomeVestido, event) {
+      event.preventDefault();
+      const url = window.location.href.split('?')[0];
+      const msg = `Olá! Vi o catálogo da Pituchinhas e tenho interesse no vestido *${nomeVestido}*. 👗\n\n🔗 ${url}`;
+      window.open(`https://wa.me/${WPP}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function filtrar(tipo, btn) {
+      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
+      btn.classList.add('ativo');
+
+      document.querySelectorAll('.vestido-card').forEach(card => {
+        if (tipo === 'todos' || card.dataset.tipo === tipo) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+flow:
+  name: "pre_atendimento_loja_infantil"
+
+  steps:
+
+    - id: boas_vindas
+      trigger: first_message
+      message: |
+        Olá! Que alegria ter você aqui! 🎀
+        Sou a Alice, assistente da Pituchinhas Moda Infantil.
+        Aqui a gente transforma a festa do seu pequeno em um
+        momento ainda mais especial! ✨
+
+        Você está buscando roupa para qual ocasião?
+
+        *1️⃣* Festa temática (aniversário, fantasia, tema específico)
+        *2️⃣* Gala / evento social (formatura, casamento, debutante)
+        *3️⃣* Os dois! Quero ver as opções 😍
+
+    - id: tipo_roupa
+      depends_on: boas_vindas
+      capture_as: tipo_roupa
+      validate:
+        type: choice
+        options: ["1", "2", "3"]
+        fallback: "Pode responder com *1*, *2* ou *3* 😊"
+
+    - id: perguntar_nome_crianca
+      depends_on: tipo_roupa
+      message: |
+        Maravilha! Me conta: qual é o nome e a idade
+        do(a) pequenininho(a)? 🥰
+      capture_as: nome_e_idade
+
+    - id: perguntar_tamanho
+      depends_on: perguntar_nome_crianca
+      message: |
+        Que fofura! 💛
+        Você sabe o tamanho ou número da roupa de {nome_e_idade}?
+
+        (Ex: 4 anos, tamanho 4, número 6 — do jeito que souber)
+        Se não souber ao certo, escreva "não sei" que a gente ajuda! 😊
+      capture_as: tamanho_roupa
+
+    - id: perguntar_tema
+      depends_on: perguntar_tamanho
+      condition: tipo_roupa == "1" or tipo_roupa == "3"
+      message: |
+        Ótimo! E qual é o *tema da festa*? 🎉
+        (Ex: Princesa, Super-Herói, Fundo do Mar, Safari,
+        Circo, Baloeiro, ou qualquer outro sonho!)
+      capture_as: tema_festa
+
+    - id: perguntar_data
+      depends_on: perguntar_tema
+      message: |
+        Que tema incrível! 🌟
+        Qual é a *data da festa*?
+        (Precisamos saber para garantir a entrega no prazo ✅)
+      capture_as: data_festa
+
+    - id: detalhes_extras
+      depends_on: perguntar_data
+      message: |
+        Última pergunta, prometo! 😄
+        Tem algum detalhe especial que você quer na roupa?
+        (cor preferida, algum personagem específico, acessórios, etc.)
+
+        Pode escrever à vontade ou digitar *"não"* para pular 📝
+      capture_as: detalhes_extras
+
+    - id: encerramento
+      depends_on: detalhes_extras
+      message: |
+        Perfeito! Já tenho tudo que preciso! 🎀
+
+        *Resumo do pedido:*
+        👧 Criança: {nome_e_idade}
+        👗 Tipo: {tipo_roupa}
+        📏 Tamanho: {tamanho_roupa}
+        🎉 Tema: {tema_festa}
+        📅 Data da festa: {data_festa}
+        ✨ Detalhes: {detalhes_extras}
+
+        Nossa equipe vai entrar em contato em breve com
+        opções incríveis pra vocês! Mal posso esperar 💛
+
+    - id: salvar_lead
+      depends_on: encerramento
+      action: save_to_file
+      file: "pedidos.json"
+      data:
+        nome_crianca: "{nome_e_idade}"
+        tipo_roupa: "{tipo_roupa}"
+        tamanho: "{tamanho_roupa}"
+        tema: "{tema_festa}"
+        data_festa: "{data_festa}"
+        detalhes: "{detalhes_extras}"
+        telefone: "{sender_phone}"
+        timestamp: "{now}"
+
+  # Transferência para humano
+  human_handoff:
+    triggers:
+      - "falar com atendente"
+      - "quero falar com alguém"
+      - "urgente"
+      - "preciso agora"
+    message: |
+      Claro! Vou te conectar com nossa equipe agora mesmo. 👗
+      Um instante, por favor... ✨
+
+  # FAQ automático
+  fallback_responses:
+    - keyword: "preço"
+      response: "Os valores variam conforme o modelo e personalização 💛 Me passa as informações da festa que a equipe faz um orçamento especial pra você! 🎀"
+    - keyword: "prazo"
+      response: "O prazo depende do modelo escolhido. Me conta a data da festa que garantimos a entrega no tempo certo! ✅"
+    - keyword: "endereço"
+      response: "Atendemos de forma online com entrega para todo o Brasil! 📦 Tem também atendimento presencial em [CIDADE]. Qual preferir? 😊"
+    - keyword: "troca"
+      response: "Temos política de troca garantida! Nossa equipe te explica todos os detalhes 💙"
+    - keyword: "foto"
+      response: "Boa ideia! Pode mandar a foto do tema ou da referência que você quer — nossa especialista vai adorar ver! 📸"
+
+  # Fora do horário
+  out_of_hours:
+    schedule: "seg-sab 09:00-19:00"
+    message: |
+      Oi, oi! 🌙 No momento estamos fora do horário de atendimento.
+      Voltamos amanhã às 9h com todo o gás! ✨
+
+      Deixa seu nome e o tema da festa que a Alice não esquece
+      de te responder assim que abrir! 🎀
