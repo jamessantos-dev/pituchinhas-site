@@ -47,46 +47,77 @@
 
     /* PAGE HEADER */
     .page-header {
-      padding: 140px 5% 60px;
+      padding: 140px 5% 48px;
       text-align: center;
       background: linear-gradient(135deg, #FFF0F6 0%, #FFF8F3 60%, #FEF9EE 100%);
     }
     .page-header .label { font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--dourado); margin-bottom: 12px; }
     .page-header h1 { font-size: clamp(1.8rem, 4vw, 3rem); color: var(--texto); margin-bottom: 14px; }
-    .page-header p { font-size: 1rem; color: var(--texto-leve); line-height: 1.8; max-width: 520px; margin: 0 auto; }
+    .page-header p { font-size: 1rem; color: var(--texto-leve); line-height: 1.8; max-width: 520px; margin: 0 auto 28px; }
+
+    /* BUSCA */
+    .busca-wrap {
+      max-width: 480px; margin: 0 auto;
+      position: relative;
+    }
+    .busca-wrap input {
+      width: 100%;
+      padding: 14px 48px 14px 20px;
+      border: 2px solid var(--rosa);
+      border-radius: 50px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--texto);
+      background: var(--branco);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .busca-wrap input:focus { border-color: var(--rosa-escuro); }
+    .busca-wrap input::placeholder { color: var(--texto-leve); }
+    .busca-icon {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      color: var(--rosa-escuro); font-size: 1.1rem; pointer-events: none;
+    }
 
     /* FILTROS */
-    .filtros {
+    .filtros-wrap { padding: 28px 5% 0; }
+    .filtros-scroll {
       display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
-      padding: 32px 5% 0;
+      max-width: 1200px; margin: 0 auto;
     }
     .filtro-btn {
       border: 2px solid var(--rosa);
       background: transparent;
       color: var(--rosa-escuro);
       font-family: 'Lato', sans-serif;
-      font-size: 0.82rem; font-weight: 700;
+      font-size: 0.8rem; font-weight: 700;
       letter-spacing: 1px; text-transform: uppercase;
-      padding: 8px 20px; border-radius: 50px;
-      cursor: pointer; transition: all .2s;
+      padding: 7px 18px; border-radius: 50px;
+      cursor: pointer; transition: all .2s; white-space: nowrap;
     }
     .filtro-btn:hover, .filtro-btn.ativo {
       background: var(--rosa-escuro); color: var(--branco); border-color: var(--rosa-escuro);
     }
 
+    /* CONTAGEM */
+    .contagem {
+      text-align: center; padding: 20px 5% 0;
+      font-size: 0.85rem; color: var(--texto-leve);
+    }
+
     /* GRID */
-    .catalogo-section { padding: 40px 5% 88px; }
+    .catalogo-section { padding: 28px 5% 80px; }
     .catalogo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
       max-width: 1200px; margin: 0 auto;
     }
 
     /* CARD */
     .vestido-card {
       background: var(--branco);
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 4px 20px var(--sombra);
       transition: transform .3s, box-shadow .3s;
@@ -94,7 +125,6 @@
     }
     .vestido-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px var(--sombra); }
 
-    /* FOTO */
     .vestido-foto {
       width: 100%;
       aspect-ratio: 3/4;
@@ -104,54 +134,68 @@
     }
     .vestido-foto img {
       width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
+      object-fit: cover; display: block;
+      transition: transform .4s;
     }
-    .vestido-foto .sem-foto {
-      width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 10px;
-    }
-    .vestido-foto .sem-foto .emoji { font-size: 4rem; }
-    .vestido-foto .sem-foto span { font-size: 0.78rem; color: var(--texto-leve); font-weight: 700; letter-spacing: 1px; }
-    .badge-tipo {
-      position: absolute; top: 14px; left: 14px;
+    .vestido-card:hover .vestido-foto img { transform: scale(1.04); }
+    .badge-cat {
+      position: absolute; top: 12px; left: 12px;
       background: var(--rosa-escuro); color: var(--branco);
-      font-size: 0.7rem; font-weight: 700;
+      font-size: 0.65rem; font-weight: 700;
       letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 4px 12px; border-radius: 50px;
+      padding: 4px 11px; border-radius: 50px;
+      max-width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
-    .badge-tipo.gala { background: var(--dourado); }
 
-    /* INFO */
     .vestido-info {
-      padding: 20px 22px 22px;
+      padding: 16px 18px 18px;
       display: flex; flex-direction: column; gap: 12px;
       flex: 1;
     }
-    .vestido-nome { font-size: 1.05rem; color: var(--texto); }
-    .vestido-descricao { font-size: 0.85rem; color: var(--texto-leve); line-height: 1.6; }
-
-    .tamanhos-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dourado); }
-    .tamanhos-lista { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-    .tamanho-chip {
-      border: 1.5px solid var(--rosa);
-      color: var(--rosa-escuro);
-      font-size: 0.8rem; font-weight: 700;
-      padding: 3px 10px; border-radius: 50px;
+    .vestido-nome {
+      font-size: 0.97rem; color: var(--texto); line-height: 1.4;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
 
     .btn-interesse {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       background: #25D366; color: var(--branco);
-      font-size: 0.9rem; font-weight: 700;
-      padding: 13px; border-radius: 14px;
+      font-size: 0.88rem; font-weight: 700;
+      padding: 12px; border-radius: 12px;
       margin-top: auto;
       transition: background .2s, transform .15s;
     }
     .btn-interesse:hover { background: #1ebe5d; transform: scale(1.02); }
-    .btn-interesse svg { width: 18px; height: 18px; fill: white; }
+    .btn-interesse svg { width: 17px; height: 17px; fill: white; flex-shrink: 0; }
+
+    /* VER MAIS */
+    .ver-mais-wrap { text-align: center; padding: 36px 5% 0; }
+    .btn-ver-mais {
+      background: transparent;
+      border: 2px solid var(--rosa-escuro);
+      color: var(--rosa-escuro);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem; font-weight: 700; letter-spacing: 1px;
+      padding: 14px 40px; border-radius: 50px;
+      cursor: pointer; transition: all .2s;
+    }
+    .btn-ver-mais:hover { background: var(--rosa-escuro); color: var(--branco); }
+    .btn-ver-mais:disabled { opacity: 0.4; cursor: default; }
+
+    /* LOADING */
+    .loading {
+      text-align: center; padding: 60px;
+      font-size: 1rem; color: var(--texto-leve);
+    }
+    .loading span { display: inline-block; animation: pulsa 1.2s ease-in-out infinite; }
+    @keyframes pulsa { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+    /* EMPTY */
+    .vazio {
+      text-align: center; padding: 60px 20px;
+      color: var(--texto-leve); font-size: 1rem;
+    }
+    .vazio .emoji { font-size: 3rem; display: block; margin-bottom: 12px; }
 
     /* FLOATING WPP */
     .wpp-float {
@@ -171,7 +215,10 @@
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .catalogo-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+      .catalogo-grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 14px; }
+      .vestido-info { padding: 12px 14px 14px; gap: 10px; }
+      .vestido-nome { font-size: 0.85rem; }
+      .btn-interesse { font-size: 0.8rem; padding: 10px; }
     }
   </style>
 </head>
@@ -205,130 +252,31 @@
 
   <!-- HEADER -->
   <div class="page-header">
-    <div class="label">✨ Vestidos Disponíveis</div>
+    <div class="label">✨ 2.700+ produtos disponíveis</div>
     <h1>Nosso Catálogo</h1>
     <p>Escolha o vestido ideal para a festa da sua pequena e chame a gente no WhatsApp para encomendar!</p>
+    <div class="busca-wrap">
+      <input type="text" id="busca" placeholder="Buscar por nome, tema, categoria..." autocomplete="off" />
+      <span class="busca-icon">🔍</span>
+    </div>
   </div>
 
   <!-- FILTROS -->
-  <div class="filtros">
-    <button class="filtro-btn ativo" onclick="filtrar('todos', this)">Todos</button>
-    <button class="filtro-btn" onclick="filtrar('tematico', this)">Temáticos</button>
-    <button class="filtro-btn" onclick="filtrar('gala', this)">Gala & Social</button>
+  <div class="filtros-wrap">
+    <div class="filtros-scroll" id="filtros-container">
+      <button class="filtro-btn ativo" data-cat="todos">Todos</button>
+    </div>
   </div>
+
+  <div class="contagem" id="contagem"></div>
 
   <!-- CATÁLOGO -->
   <section class="catalogo-section">
     <div class="catalogo-grid" id="catalogo-grid">
-
-      <!--
-        ════════════════════════════════════════════════════
-        COMO ADICIONAR UM VESTIDO:
-
-        Copie o bloco abaixo, cole aqui e preencha:
-          - data-tipo: "tematico" ou "gala"
-          - Nome do vestido
-          - Descrição curta
-          - Tamanhos disponíveis (adicione ou remova chips)
-          - Na tag <img>, coloque o caminho da foto (ex: fotos/vestido-jardim.jpg)
-            ou remova a tag <img> e deixe o placeholder .sem-foto
-
-        EXEMPLO COM FOTO:
-          <img src="fotos/nome-do-arquivo.jpg" alt="Nome do vestido" />
-
-        EXEMPLO SEM FOTO (placeholder):
-          <div class="sem-foto">
-            <div class="emoji">👗</div>
-            <span>Em breve</span>
-          </div>
-        ════════════════════════════════════════════════════
-      -->
-
-      <!-- VESTIDO 1 -->
-      <div class="vestido-card" data-tipo="tematico">
-        <div class="vestido-foto">
-          <span class="badge-tipo">Temático</span>
-          <div class="sem-foto">
-            <div class="emoji">🌸</div>
-            <span>Adicionar foto</span>
-          </div>
-        </div>
-        <div class="vestido-info">
-          <h3 class="vestido-nome">Jardim Encantado</h3>
-          <p class="vestido-descricao">Vestido com tule florido, perfeito para festas com tema de jardim, fadas e natureza.</p>
-          <div>
-            <div class="tamanhos-label">Tamanhos disponíveis</div>
-            <div class="tamanhos-lista">
-              <span class="tamanho-chip">2</span>
-              <span class="tamanho-chip">4</span>
-              <span class="tamanho-chip">6</span>
-              <span class="tamanho-chip">8</span>
-            </div>
-          </div>
-          <a class="btn-interesse" href="#" onclick="chamarWhatsApp('Jardim Encantado', event)">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            Tenho interesse!
-          </a>
-        </div>
-      </div>
-
-      <!-- VESTIDO 2 -->
-      <div class="vestido-card" data-tipo="gala">
-        <div class="vestido-foto">
-          <span class="badge-tipo gala">Gala</span>
-          <div class="sem-foto">
-            <div class="emoji">✨</div>
-            <span>Adicionar foto</span>
-          </div>
-        </div>
-        <div class="vestido-info">
-          <h3 class="vestido-nome">Sonho de Princesa</h3>
-          <p class="vestido-descricao">Vestido de gala com brilho e saia ampla, ideal para formaturas e eventos sociais.</p>
-          <div>
-            <div class="tamanhos-label">Tamanhos disponíveis</div>
-            <div class="tamanhos-lista">
-              <span class="tamanho-chip">4</span>
-              <span class="tamanho-chip">6</span>
-              <span class="tamanho-chip">8</span>
-              <span class="tamanho-chip">10</span>
-            </div>
-          </div>
-          <a class="btn-interesse" href="#" onclick="chamarWhatsApp('Sonho de Princesa', event)">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            Tenho interesse!
-          </a>
-        </div>
-      </div>
-
-      <!-- VESTIDO 3 -->
-      <div class="vestido-card" data-tipo="tematico">
-        <div class="vestido-foto">
-          <span class="badge-tipo">Temático</span>
-          <div class="sem-foto">
-            <div class="emoji">🦁</div>
-            <span>Adicionar foto</span>
-          </div>
-        </div>
-        <div class="vestido-info">
-          <h3 class="vestido-nome">Safari & Natureza</h3>
-          <p class="vestido-descricao">Look temático com estampa de safari, perfeito para festas na natureza e aventura.</p>
-          <div>
-            <div class="tamanhos-label">Tamanhos disponíveis</div>
-            <div class="tamanhos-lista">
-              <span class="tamanho-chip">2</span>
-              <span class="tamanho-chip">4</span>
-              <span class="tamanho-chip">6</span>
-            </div>
-          </div>
-          <a class="btn-interesse" href="#" onclick="chamarWhatsApp('Safari & Natureza', event)">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            Tenho interesse!
-          </a>
-        </div>
-      </div>
-
-      <!-- ADICIONE MAIS VESTIDOS AQUI -->
-
+      <div class="loading" style="grid-column:1/-1"><span>Carregando produtos... 🎀</span></div>
+    </div>
+    <div class="ver-mais-wrap" id="ver-mais-wrap" style="display:none">
+      <button class="btn-ver-mais" id="btn-ver-mais">Ver mais produtos ↓</button>
     </div>
   </section>
 
@@ -345,26 +293,122 @@
 
   <script>
     const WPP = '5531996935928';
+    const POR_PAGINA = 24;
 
-    function chamarWhatsApp(nomeVestido, event) {
-      event.preventDefault();
-      const url = window.location.href.split('?')[0];
-      const msg = `Olá! Vi o catálogo da Pituchinhas e tenho interesse no vestido *${nomeVestido}*. 👗\n\n🔗 ${url}`;
-      window.open(`https://wa.me/${WPP}?text=${encodeURIComponent(msg)}`, '_blank');
+    let todosOsProdutos = [];
+    let filtrados = [];
+    let paginaAtual = 0;
+    let catAtiva = 'todos';
+
+    const grid = document.getElementById('catalogo-grid');
+    const contagemEl = document.getElementById('contagem');
+    const verMaisWrap = document.getElementById('ver-mais-wrap');
+    const btnVerMais = document.getElementById('btn-ver-mais');
+    const buscaInput = document.getElementById('busca');
+    const filtrosContainer = document.getElementById('filtros-container');
+
+    const wppIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white"/></svg>`;
+
+    function criarCard(p) {
+      const msg = encodeURIComponent(`Olá! Vi o catálogo da Pituchinhas e tenho interesse em:\n\n*${p.nome}*\n\n🔗 ${p.url}`);
+      return `
+        <div class="vestido-card">
+          <div class="vestido-foto">
+            <span class="badge-cat">${p.categoria}</span>
+            <img src="${p.imagem}" alt="${p.nome}" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <div class="vestido-info">
+            <h3 class="vestido-nome">${p.nome}</h3>
+            <a class="btn-interesse" href="https://wa.me/${WPP}?text=${msg}" target="_blank" rel="noopener">
+              ${wppIcon} Tenho interesse!
+            </a>
+          </div>
+        </div>`;
     }
 
-    function filtrar(tipo, btn) {
-      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
-      btn.classList.add('ativo');
+    function aplicarFiltro() {
+      const termo = buscaInput.value.toLowerCase().trim();
+      filtrados = todosOsProdutos.filter(p => {
+        const matchCat = catAtiva === 'todos' || p.categoria === catAtiva;
+        const matchBusca = !termo ||
+          p.nome.toLowerCase().includes(termo) ||
+          p.categoria.toLowerCase().includes(termo);
+        return matchCat && matchBusca;
+      });
+      paginaAtual = 0;
+      grid.innerHTML = '';
+      renderizarPagina();
+    }
 
-      document.querySelectorAll('.vestido-card').forEach(card => {
-        if (tipo === 'todos' || card.dataset.tipo === tipo) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+    function renderizarPagina() {
+      const inicio = paginaAtual * POR_PAGINA;
+      const fatia = filtrados.slice(inicio, inicio + POR_PAGINA);
+
+      if (filtrados.length === 0) {
+        grid.innerHTML = `<div class="vazio" style="grid-column:1/-1"><span class="emoji">🔍</span>Nenhum produto encontrado para "<strong>${buscaInput.value}</strong>"</div>`;
+        verMaisWrap.style.display = 'none';
+        contagemEl.textContent = '';
+        return;
+      }
+
+      grid.insertAdjacentHTML('beforeend', fatia.map(criarCard).join(''));
+      paginaAtual++;
+
+      const exibidos = Math.min(paginaAtual * POR_PAGINA, filtrados.length);
+      contagemEl.textContent = `Exibindo ${exibidos} de ${filtrados.length} produtos`;
+
+      if (exibidos < filtrados.length) {
+        verMaisWrap.style.display = 'block';
+        btnVerMais.disabled = false;
+        btnVerMais.textContent = `Ver mais produtos (${filtrados.length - exibidos} restantes) ↓`;
+      } else {
+        verMaisWrap.style.display = 'none';
+      }
+    }
+
+    function criarFiltros(produtos) {
+      const cats = [...new Set(produtos.map(p => p.categoria))].sort();
+      cats.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'filtro-btn';
+        btn.dataset.cat = cat;
+        btn.textContent = cat;
+        btn.addEventListener('click', () => selecionarCat(cat, btn));
+        filtrosContainer.appendChild(btn);
       });
     }
+
+    function selecionarCat(cat, btn) {
+      catAtiva = cat;
+      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
+      btn.classList.add('ativo');
+      aplicarFiltro();
+    }
+
+    filtrosContainer.querySelector('[data-cat="todos"]').addEventListener('click', function() {
+      selecionarCat('todos', this);
+    });
+
+    btnVerMais.addEventListener('click', renderizarPagina);
+
+    let buscaTimer;
+    buscaInput.addEventListener('input', () => {
+      clearTimeout(buscaTimer);
+      buscaTimer = setTimeout(aplicarFiltro, 300);
+    });
+
+    fetch('produtos.json')
+      .then(r => r.json())
+      .then(data => {
+        todosOsProdutos = data;
+        filtrados = data;
+        criarFiltros(data);
+        grid.innerHTML = '';
+        renderizarPagina();
+      })
+      .catch(() => {
+        grid.innerHTML = '<div class="vazio" style="grid-column:1/-1"><span class="emoji">⚠️</span>Erro ao carregar o catálogo. Atualize a página.</div>';
+      });
   </script>
 
 </body>
