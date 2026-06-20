@@ -56,88 +56,63 @@
     .page-header p { font-size: 1rem; color: var(--texto-leve); line-height: 1.8; max-width: 520px; margin: 0 auto 28px; }
 
     /* BUSCA */
-    .busca-wrap {
-      max-width: 480px; margin: 0 auto;
-      position: relative;
-    }
+    .busca-wrap { max-width: 480px; margin: 0 auto; position: relative; }
     .busca-wrap input {
-      width: 100%;
-      padding: 14px 48px 14px 20px;
-      border: 2px solid var(--rosa);
-      border-radius: 50px;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.95rem;
-      color: var(--texto);
-      background: var(--branco);
-      outline: none;
-      transition: border-color .2s;
+      width: 100%; padding: 14px 48px 14px 20px;
+      border: 2px solid var(--rosa); border-radius: 50px;
+      font-family: 'Lato', sans-serif; font-size: 0.95rem; color: var(--texto);
+      background: var(--branco); outline: none; transition: border-color .2s;
     }
     .busca-wrap input:focus { border-color: var(--rosa-escuro); }
     .busca-wrap input::placeholder { color: var(--texto-leve); }
-    .busca-icon {
-      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
-      color: var(--rosa-escuro); font-size: 1.1rem; pointer-events: none;
-    }
+    .busca-icon { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--rosa-escuro); font-size: 1.1rem; pointer-events: none; }
 
     /* FILTROS */
     .filtros-wrap { padding: 28px 5% 0; }
-    .filtros-scroll {
-      display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
-      max-width: 1200px; margin: 0 auto;
-    }
+    .filtros-scroll { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; }
     .filtro-btn {
-      border: 2px solid var(--rosa);
-      background: transparent;
-      color: var(--rosa-escuro);
-      font-family: 'Lato', sans-serif;
-      font-size: 0.8rem; font-weight: 700;
+      border: 2px solid var(--rosa); background: transparent; color: var(--rosa-escuro);
+      font-family: 'Lato', sans-serif; font-size: 0.8rem; font-weight: 700;
       letter-spacing: 1px; text-transform: uppercase;
-      padding: 7px 18px; border-radius: 50px;
-      cursor: pointer; transition: all .2s; white-space: nowrap;
+      padding: 7px 18px; border-radius: 50px; cursor: pointer; transition: all .2s; white-space: nowrap;
     }
-    .filtro-btn:hover, .filtro-btn.ativo {
-      background: var(--rosa-escuro); color: var(--branco); border-color: var(--rosa-escuro);
-    }
+    .filtro-btn:hover, .filtro-btn.ativo { background: var(--rosa-escuro); color: var(--branco); border-color: var(--rosa-escuro); }
 
     /* CONTAGEM */
-    .contagem {
-      text-align: center; padding: 20px 5% 0;
-      font-size: 0.85rem; color: var(--texto-leve);
-    }
+    .contagem { text-align: center; padding: 20px 5% 0; font-size: 0.85rem; color: var(--texto-leve); }
 
     /* GRID */
     .catalogo-section { padding: 28px 5% 80px; }
     .catalogo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px;
-      max-width: 1200px; margin: 0 auto;
+      gap: 24px; max-width: 1200px; margin: 0 auto;
     }
 
     /* CARD */
     .vestido-card {
-      background: var(--branco);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px var(--sombra);
-      transition: transform .3s, box-shadow .3s;
+      background: var(--branco); border-radius: 20px; overflow: hidden;
+      box-shadow: 0 4px 20px var(--sombra); transition: transform .3s, box-shadow .3s;
       display: flex; flex-direction: column;
     }
     .vestido-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px var(--sombra); }
 
+    /* FOTO DO CARD */
     .vestido-foto {
-      width: 100%;
-      aspect-ratio: 3/4;
-      overflow: hidden;
+      width: 100%; aspect-ratio: 3/4; overflow: hidden;
       background: linear-gradient(145deg, #FCE4EC, #FFF0F6);
-      position: relative;
+      position: relative; cursor: zoom-in;
     }
-    .vestido-foto img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-      transition: transform .4s;
-    }
+    .vestido-foto img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
     .vestido-card:hover .vestido-foto img { transform: scale(1.04); }
+
+    /* Badge contador de fotos */
+    .badge-fotos {
+      position: absolute; bottom: 10px; right: 10px;
+      background: rgba(0,0,0,0.55); color: #fff;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      padding: 3px 9px; border-radius: 50px;
+    }
     .badge-cat {
       position: absolute; top: 12px; left: 12px;
       background: var(--rosa-escuro); color: var(--branco);
@@ -147,22 +122,32 @@
       max-width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
 
-    .vestido-info {
-      padding: 16px 18px 18px;
-      display: flex; flex-direction: column; gap: 12px;
-      flex: 1;
-    }
+    /* INFO DO CARD */
+    .vestido-info { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
     .vestido-nome {
       font-size: 0.97rem; color: var(--texto); line-height: 1.4;
       display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    /* TAMANHOS NO CARD */
+    .tamanhos-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dourado); }
+    .tamanhos-lista { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
+    .tam-chip {
+      font-size: 0.75rem; font-weight: 700;
+      padding: 3px 9px; border-radius: 50px;
+      border: 1.5px solid var(--rosa);
+      color: var(--rosa-escuro);
+    }
+    .tam-chip.esgotado {
+      border-color: #ccc; color: #bbb;
+      text-decoration: line-through;
     }
 
     .btn-interesse {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       background: #25D366; color: var(--branco);
       font-size: 0.88rem; font-weight: 700;
-      padding: 12px; border-radius: 12px;
-      margin-top: auto;
+      padding: 12px; border-radius: 12px; margin-top: auto;
       transition: background .2s, transform .15s;
     }
     .btn-interesse:hover { background: #1ebe5d; transform: scale(1.02); }
@@ -171,70 +156,92 @@
     /* VER MAIS */
     .ver-mais-wrap { text-align: center; padding: 36px 5% 0; }
     .btn-ver-mais {
-      background: transparent;
-      border: 2px solid var(--rosa-escuro);
-      color: var(--rosa-escuro);
-      font-family: 'Lato', sans-serif;
-      font-size: 0.9rem; font-weight: 700; letter-spacing: 1px;
-      padding: 14px 40px; border-radius: 50px;
-      cursor: pointer; transition: all .2s;
+      background: transparent; border: 2px solid var(--rosa-escuro); color: var(--rosa-escuro);
+      font-family: 'Lato', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px;
+      padding: 14px 40px; border-radius: 50px; cursor: pointer; transition: all .2s;
     }
     .btn-ver-mais:hover { background: var(--rosa-escuro); color: var(--branco); }
     .btn-ver-mais:disabled { opacity: 0.4; cursor: default; }
 
-    /* LOADING */
-    .loading {
-      text-align: center; padding: 60px;
-      font-size: 1rem; color: var(--texto-leve);
-    }
+    /* LOADING / EMPTY */
+    .loading { text-align: center; padding: 60px; font-size: 1rem; color: var(--texto-leve); }
     .loading span { display: inline-block; animation: pulsa 1.2s ease-in-out infinite; }
     @keyframes pulsa { 0%,100%{opacity:.4} 50%{opacity:1} }
-
-    /* EMPTY */
-    .vazio {
-      text-align: center; padding: 60px 20px;
-      color: var(--texto-leve); font-size: 1rem;
-    }
+    .vazio { text-align: center; padding: 60px 20px; color: var(--texto-leve); font-size: 1rem; }
     .vazio .emoji { font-size: 3rem; display: block; margin-bottom: 12px; }
 
-    /* LIGHTBOX */
+    /* ── LIGHTBOX ──────────────────────────────────────────── */
     .lightbox {
-      display: none;
-      position: fixed; inset: 0; z-index: 500;
-      background: rgba(0,0,0,0.85);
-      align-items: center; justify-content: center;
-      padding: 20px;
-      cursor: zoom-out;
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.9);
+      flex-direction: column; align-items: center; justify-content: center;
     }
     .lightbox.aberto { display: flex; }
-    .lightbox img {
-      max-width: 90vw; max-height: 90vh;
-      object-fit: contain;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      cursor: default;
+
+    /* Imagem principal */
+    .lightbox-img-wrap {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      max-width: 90vw; max-height: 80vh;
     }
+    .lightbox-img-wrap img {
+      max-width: 90vw; max-height: 78vh;
+      object-fit: contain; border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      display: block;
+    }
+
+    /* Setas prev/next */
+    .lb-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.18); border: none; color: #fff;
+      font-size: 1.6rem; width: 46px; height: 46px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s; z-index: 10;
+    }
+    .lb-arrow:hover { background: rgba(255,255,255,0.35); }
+    .lb-arrow.prev { left: -58px; }
+    .lb-arrow.next { right: -58px; }
+    .lb-arrow.oculto { opacity: 0; pointer-events: none; }
+
+    /* Fechar */
     .lightbox-fechar {
-      position: absolute; top: 18px; right: 22px;
-      background: rgba(255,255,255,0.15);
-      border: none; color: #fff;
-      font-size: 1.6rem; line-height: 1;
-      width: 42px; height: 42px;
-      border-radius: 50%; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
+      position: fixed; top: 18px; right: 22px;
+      background: rgba(255,255,255,0.15); border: none; color: #fff;
+      font-size: 1.4rem; width: 42px; height: 42px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
       transition: background .2s;
     }
     .lightbox-fechar:hover { background: rgba(255,255,255,0.3); }
-    .vestido-foto { cursor: zoom-in; }
+
+    /* Nome + contador */
+    .lb-info {
+      text-align: center; color: rgba(255,255,255,0.85);
+      margin-top: 14px; max-width: 90vw;
+    }
+    .lb-nome { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 4px; }
+    .lb-contador { font-size: 0.78rem; color: rgba(255,255,255,0.5); letter-spacing: 2px; }
+
+    /* Miniaturas */
+    .lb-thumbs {
+      display: flex; gap: 8px; margin-top: 14px;
+      max-width: 90vw; overflow-x: auto; padding-bottom: 4px;
+    }
+    .lb-thumbs::-webkit-scrollbar { height: 4px; }
+    .lb-thumbs::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
+    .lb-thumb {
+      width: 54px; height: 54px; flex-shrink: 0;
+      border-radius: 8px; overflow: hidden; cursor: pointer;
+      border: 2px solid transparent; transition: border-color .2s; opacity: 0.6;
+    }
+    .lb-thumb.ativo { border-color: var(--rosa); opacity: 1; }
+    .lb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* FLOATING WPP */
     .wpp-float {
       position: fixed; bottom: 28px; right: 28px; z-index: 200;
-      width: 58px; height: 58px;
-      background: #25D366; border-radius: 50%;
+      width: 58px; height: 58px; background: #25D366; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 20px rgba(37,211,102,0.5);
-      transition: transform .2s;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.5); transition: transform .2s;
     }
     .wpp-float:hover { transform: scale(1.1); }
     .wpp-float svg { width: 28px; height: 28px; fill: white; }
@@ -246,9 +253,11 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .catalogo-grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 14px; }
-      .vestido-info { padding: 12px 14px 14px; gap: 10px; }
+      .vestido-info { padding: 12px 14px 14px; gap: 8px; }
       .vestido-nome { font-size: 0.85rem; }
       .btn-interesse { font-size: 0.8rem; padding: 10px; }
+      .lb-arrow.prev { left: -44px; }
+      .lb-arrow.next { right: -44px; }
     }
   </style>
 </head>
@@ -282,7 +291,7 @@
 
   <!-- HEADER -->
   <div class="page-header">
-    <div class="label">✨ 2.700+ produtos disponíveis</div>
+    <div class="label" id="header-label">✨ Carregando catálogo...</div>
     <h1>Nosso Catálogo</h1>
     <p>Escolha o vestido ideal para a festa da sua pequena e chame a gente no WhatsApp para encomendar!</p>
     <div class="busca-wrap">
@@ -318,8 +327,17 @@
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-fechar" id="lightbox-fechar">✕</button>
-    <img id="lightbox-img" src="" alt="" />
+    <button class="lightbox-fechar" id="lb-fechar">✕</button>
+    <div class="lightbox-img-wrap">
+      <button class="lb-arrow prev" id="lb-prev">‹</button>
+      <img id="lb-img" src="" alt="" />
+      <button class="lb-arrow next" id="lb-next">›</button>
+    </div>
+    <div class="lb-info">
+      <div class="lb-nome" id="lb-nome"></div>
+      <div class="lb-contador" id="lb-contador"></div>
+    </div>
+    <div class="lb-thumbs" id="lb-thumbs"></div>
   </div>
 
   <!-- FLOATING WPP -->
@@ -328,57 +346,129 @@
   </a>
 
   <script>
-    const WPP = '5531996935928';
-
-    // Lightbox
-    const lightbox    = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    function abrirLightbox(src, alt) {
-      lightboxImg.src = src;
-      lightboxImg.alt = alt;
-      lightbox.classList.add('aberto');
-      document.body.style.overflow = 'hidden';
-    }
-    function fecharLightbox() {
-      lightbox.classList.remove('aberto');
-      document.body.style.overflow = '';
-    }
-    lightbox.addEventListener('click', fecharLightbox);
-    lightboxImg.addEventListener('click', e => e.stopPropagation());
-    document.getElementById('lightbox-fechar').addEventListener('click', fecharLightbox);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharLightbox(); });
-
+    const WPP       = '5531996935928';
     const POR_PAGINA = 24;
 
     let todosOsProdutos = [];
-    let filtrados = [];
-    let paginaAtual = 0;
-    let catAtiva = 'todos';
+    let filtrados       = [];
+    let paginaAtual     = 0;
+    let catAtiva        = 'todos';
 
-    const grid = document.getElementById('catalogo-grid');
-
-    grid.addEventListener('click', e => {
-      const img = e.target.closest('img[data-lightbox]');
-      if (img) abrirLightbox(img.dataset.lightbox, img.alt);
-    });
-    const contagemEl = document.getElementById('contagem');
-    const verMaisWrap = document.getElementById('ver-mais-wrap');
-    const btnVerMais = document.getElementById('btn-ver-mais');
-    const buscaInput = document.getElementById('busca');
+    // ── Elementos ─────────────────────────────────────────────
+    const grid             = document.getElementById('catalogo-grid');
+    const contagemEl       = document.getElementById('contagem');
+    const verMaisWrap      = document.getElementById('ver-mais-wrap');
+    const btnVerMais       = document.getElementById('btn-ver-mais');
+    const buscaInput       = document.getElementById('busca');
     const filtrosContainer = document.getElementById('filtros-container');
+    const headerLabel      = document.getElementById('header-label');
 
+    // ── Lightbox ──────────────────────────────────────────────
+    const lightbox   = document.getElementById('lightbox');
+    const lbImg      = document.getElementById('lb-img');
+    const lbNome     = document.getElementById('lb-nome');
+    const lbContador = document.getElementById('lb-contador');
+    const lbThumbs   = document.getElementById('lb-thumbs');
+    const lbPrev     = document.getElementById('lb-prev');
+    const lbNext     = document.getElementById('lb-next');
+
+    let lbFotos  = [];
+    let lbIndice = 0;
+
+    function abrirLightbox(fotos, nome, indiceInicial = 0) {
+      lbFotos  = fotos;
+      lbNome.textContent = nome;
+      document.body.style.overflow = 'hidden';
+      lightbox.classList.add('aberto');
+      renderLightbox(indiceInicial);
+    }
+
+    function renderLightbox(i) {
+      lbIndice     = i;
+      lbImg.src    = lbFotos[i];
+      lbImg.alt    = lbNome.textContent;
+      lbContador.textContent = lbFotos.length > 1
+        ? `${i + 1} / ${lbFotos.length} fotos`
+        : '';
+
+      lbPrev.classList.toggle('oculto', i === 0);
+      lbNext.classList.toggle('oculto', i === lbFotos.length - 1);
+
+      // Miniaturas
+      lbThumbs.innerHTML = lbFotos.length > 1
+        ? lbFotos.map((src, idx) => `
+            <div class="lb-thumb ${idx === i ? 'ativo' : ''}" data-idx="${idx}">
+              <img src="${src}" alt="" loading="lazy" />
+            </div>`).join('')
+        : '';
+
+      // Scroll para miniatura ativa
+      if (lbFotos.length > 1) {
+        const ativa = lbThumbs.querySelector('.lb-thumb.ativo');
+        if (ativa) ativa.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }
+
+    function fecharLightbox() {
+      lightbox.classList.remove('aberto');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) fecharLightbox();
+    });
+    document.getElementById('lb-fechar').addEventListener('click', fecharLightbox);
+    lbPrev.addEventListener('click', () => { if (lbIndice > 0) renderLightbox(lbIndice - 1); });
+    lbNext.addEventListener('click', () => { if (lbIndice < lbFotos.length - 1) renderLightbox(lbIndice + 1); });
+    lbThumbs.addEventListener('click', e => {
+      const thumb = e.target.closest('.lb-thumb');
+      if (thumb) renderLightbox(+thumb.dataset.idx);
+    });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('aberto')) return;
+      if (e.key === 'Escape')      fecharLightbox();
+      if (e.key === 'ArrowLeft'  && lbIndice > 0)                  renderLightbox(lbIndice - 1);
+      if (e.key === 'ArrowRight' && lbIndice < lbFotos.length - 1) renderLightbox(lbIndice + 1);
+    });
+
+    // ── SVG WhatsApp ──────────────────────────────────────────
     const wppIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="white"/></svg>`;
 
+    // ── Criar card ────────────────────────────────────────────
     function criarCard(p) {
-      const msg = encodeURIComponent(`Olá! Vi o catálogo da Pituchinhas e tenho interesse em:\n\n*${p.nome}*\n\n🔗 ${p.url}`);
+      const fotos    = p.imagens && p.imagens.length ? p.imagens : [p.imagem];
+      const fotasCod = encodeURIComponent(JSON.stringify(fotos));
+      const nomeCod  = encodeURIComponent(p.nome);
+      const msg      = encodeURIComponent(`Olá! Vi o catálogo da Pituchinhas e tenho interesse em:\n\n*${p.nome}*\n\n🔗 ${p.url}`);
+
+      const tamanhoHTML = p.tamanhos && p.tamanhos.length
+        ? `<div>
+             <div class="tamanhos-label">Tamanhos</div>
+             <div class="tamanhos-lista">
+               ${p.tamanhos.map(t =>
+                 `<span class="tam-chip ${t.disponivel ? '' : 'esgotado'}">${t.tamanho}</span>`
+               ).join('')}
+             </div>
+           </div>`
+        : '';
+
+      const badgeFotos = fotos.length > 1
+        ? `<span class="badge-fotos">📸 ${fotos.length}</span>`
+        : '';
+
       return `
         <div class="vestido-card">
-          <div class="vestido-foto">
+          <div class="vestido-foto"
+               data-fotos="${fotasCod}"
+               data-nome="${nomeCod}">
             <span class="badge-cat">${p.categoria}</span>
-            <img src="${p.imagem}" alt="${p.nome}" loading="lazy" onerror="this.style.display='none'" data-lightbox="${p.imagem}"/>
+            ${badgeFotos}
+            <img src="${fotos[0]}" alt="${p.nome}" loading="lazy" onerror="this.style.display='none'" />
           </div>
           <div class="vestido-info">
             <h3 class="vestido-nome">${p.nome}</h3>
+            ${tamanhoHTML}
             <a class="btn-interesse" href="https://wa.me/${WPP}?text=${msg}" target="_blank" rel="noopener">
               ${wppIcon} Tenho interesse!
             </a>
@@ -386,10 +476,22 @@
         </div>`;
     }
 
+    // Clique na foto → lightbox
+    grid.addEventListener('click', e => {
+      const foto = e.target.closest('.vestido-foto');
+      if (!foto) return;
+      try {
+        const fotos = JSON.parse(decodeURIComponent(foto.dataset.fotos));
+        const nome  = decodeURIComponent(foto.dataset.nome);
+        abrirLightbox(fotos, nome, 0);
+      } catch {}
+    });
+
+    // ── Filtrar / Paginar ─────────────────────────────────────
     function aplicarFiltro() {
       const termo = buscaInput.value.toLowerCase().trim();
       filtrados = todosOsProdutos.filter(p => {
-        const matchCat = catAtiva === 'todos' || p.categoria === catAtiva;
+        const matchCat   = catAtiva === 'todos' || p.categoria === catAtiva;
         const matchBusca = !termo ||
           p.nome.toLowerCase().includes(termo) ||
           p.categoria.toLowerCase().includes(termo);
@@ -401,16 +503,14 @@
     }
 
     function renderizarPagina() {
-      const inicio = paginaAtual * POR_PAGINA;
-      const fatia = filtrados.slice(inicio, inicio + POR_PAGINA);
-
       if (filtrados.length === 0) {
-        grid.innerHTML = `<div class="vazio" style="grid-column:1/-1"><span class="emoji">🔍</span>Nenhum produto encontrado para "<strong>${buscaInput.value}</strong>"</div>`;
+        grid.innerHTML = `<div class="vazio" style="grid-column:1/-1"><span class="emoji">🔍</span>Nenhum produto encontrado.</div>`;
         verMaisWrap.style.display = 'none';
         contagemEl.textContent = '';
         return;
       }
 
+      const fatia = filtrados.slice(paginaAtual * POR_PAGINA, (paginaAtual + 1) * POR_PAGINA);
       grid.insertAdjacentHTML('beforeend', fatia.map(criarCard).join(''));
       paginaAtual++;
 
@@ -419,7 +519,6 @@
 
       if (exibidos < filtrados.length) {
         verMaisWrap.style.display = 'block';
-        btnVerMais.disabled = false;
         btnVerMais.textContent = `Ver mais produtos (${filtrados.length - exibidos} restantes) ↓`;
       } else {
         verMaisWrap.style.display = 'none';
@@ -430,7 +529,7 @@
       const cats = [...new Set(produtos.map(p => p.categoria))].sort();
       cats.forEach(cat => {
         const btn = document.createElement('button');
-        btn.className = 'filtro-btn';
+        btn.className  = 'filtro-btn';
         btn.dataset.cat = cat;
         btn.textContent = cat;
         btn.addEventListener('click', () => selecionarCat(cat, btn));
@@ -448,7 +547,6 @@
     filtrosContainer.querySelector('[data-cat="todos"]').addEventListener('click', function() {
       selecionarCat('todos', this);
     });
-
     btnVerMais.addEventListener('click', renderizarPagina);
 
     let buscaTimer;
@@ -457,18 +555,32 @@
       buscaTimer = setTimeout(aplicarFiltro, 300);
     });
 
-    fetch('produtos.json')
-      .then(r => r.json())
-      .then(data => {
-        todosOsProdutos = data;
-        filtrados = data;
-        criarFiltros(data);
-        grid.innerHTML = '';
-        renderizarPagina();
-      })
-      .catch(() => {
-        grid.innerHTML = '<div class="vazio" style="grid-column:1/-1"><span class="emoji">⚠️</span>Erro ao carregar o catálogo. Atualize a página.</div>';
-      });
+    // ── Carregar dados ────────────────────────────────────────
+    // Tenta produtos-completos.json (com galeria + tamanhos), senão usa produtos.json
+    async function carregarProdutos() {
+      try {
+        const r = await fetch('produtos-completos.json');
+        if (!r.ok) throw new Error('sem arquivo completo');
+        const dados = await r.json();
+        headerLabel.textContent = `✨ ${dados.length}+ produtos com fotos e tamanhos`;
+        return dados;
+      } catch {
+        const r = await fetch('produtos.json');
+        const dados = await r.json();
+        headerLabel.textContent = `✨ ${dados.length}+ produtos disponíveis`;
+        return dados;
+      }
+    }
+
+    carregarProdutos().then(dados => {
+      todosOsProdutos = dados;
+      filtrados = dados;
+      criarFiltros(dados);
+      grid.innerHTML = '';
+      renderizarPagina();
+    }).catch(() => {
+      grid.innerHTML = '<div class="vazio" style="grid-column:1/-1"><span class="emoji">⚠️</span>Erro ao carregar o catálogo. Atualize a página.</div>';
+    });
   </script>
 
 </body>
