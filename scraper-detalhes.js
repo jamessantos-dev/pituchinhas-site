@@ -72,7 +72,7 @@
     for (const attr of ['data-zoom-image', 'data-src', 'data-lazy-src', 'data-original', 'src']) {
       const val = img.getAttribute(attr) || '';
       if (val.includes('cdn.awsli') && !val.includes('--PRODUTO') && !val.includes('loading') && !val.includes('placeholder')) {
-        return val.replace(/\/\d+x\d+\//, '/600x600/');
+        return val.replace(/cdn\.awsli\.com\.br\/((?:\d+x\d+\/)?)/, 'cdn.awsli.com.br/600x600/');
       }
     }
     return null;
@@ -221,6 +221,23 @@
 
     if (doc) {
       imagens  = extrairImagens(doc);
+
+      // Remove imagens de produtos relacionados da sidebar
+      // Mantém até 3 pastas distintas para acomodar variantes de cor
+      if (p.imagem) {
+        const pastaMatch = p.imagem.match(/\/produto\/(\d+)\//);
+        if (pastaMatch) {
+          const pastasOk = new Set([pastaMatch[1]]);
+          imagens = imagens.filter(url => {
+            const m = url.match(/\/produto\/(\d+)\//);
+            if (!m) return true;
+            if (pastasOk.has(m[1])) return true;
+            if (pastasOk.size < 3) { pastasOk.add(m[1]); return true; }
+            return false;
+          });
+        }
+      }
+
       tamanhos = extrairTamanhos(doc);
       cores    = extrairCores(doc);
       if (imagens.length === 0) erros++;
