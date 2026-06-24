@@ -471,12 +471,11 @@
            </div>`
         : '';
 
-      const coresHTML = p.cores && p.cores.length
+      const coresVisiveis = (p.cores || []).filter(c => c.cor || c.swatch);
+      const coresHTML = coresVisiveis.length
         ? `<div class="cores-lista">
-             ${p.cores.map(c => {
-               const style = c.swatch
-                 ? ''
-                 : (c.cor ? `style="background:${c.cor}"` : 'style="background:#ccc"');
+             ${coresVisiveis.map(c => {
+               const style = c.swatch ? '' : `style="background:${c.cor}"`;
                const inner = c.swatch ? `<img src="${c.swatch}" alt="${c.nome}" />` : '';
                return `<span class="cor-swatch ${c.disponivel ? '' : 'esgotado'}" title="${c.nome}" ${style}>${inner}</span>`;
              }).join('')}
